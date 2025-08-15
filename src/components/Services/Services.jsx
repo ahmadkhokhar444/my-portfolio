@@ -90,18 +90,24 @@ const Services = () => {
                   viewport={{ once: false, amount: 0.3 }}
                   className="flex items-center gap-4"
                 >
+                  {/* Know More button */}
                   <button
                     className="bg-white text-primary rounded font-bold px-5 text-xs py-3 md:text-base
-                               hover:shadow-[0_0_20px_6px_rgba(239,68,68,0.6)] // ✅ CORRECTED: Custom red glow
-                               transition-shadow duration-300 // ✅ ADDED: Transition for shadow
-                              "
+               hover:shadow-[0_0_20px_6px_rgba(239,68,68,0.6)]
+               transition-shadow duration-300"
                   >
                     Know More
                   </button>
-                  <button className="border border-white/50 rounded-lg px-4 text-xs md:text-base flex items-center gap-2 md:py-3">
+
+                  {/* Download Resume button */}
+                  <a
+                    href="/resume.pdf"
+                    download
+                    className="border border-white/50 rounded-lg px-4 text-xs md:text-base flex items-center gap-2 md:py-3 hover:bg-white hover:text-primary transition-colors duration-300"
+                  >
                     <FiDownload />
                     Download Resume
-                  </button>
+                  </a>
                 </motion.div>
               </div>
             </div>
