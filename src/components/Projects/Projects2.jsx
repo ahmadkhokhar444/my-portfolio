@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Proj1 from "../../assets/proj1.png";
+import Proj1 from "../../assets/proj6.png";
 import Proj6 from "../../assets/proj4.png";
 import Proj5 from "../../assets/proj5.png";
 import Image from "next/image";
@@ -11,7 +11,7 @@ const ProjectsData = [
   {
     id: 1,
     title: "Portfolio Web",
-    link_1: "https://foodiezone-web.netlify.app/",
+    link_1: "https://1-portfolio-web.netlify.app/",
     link_2: "https://github.com/ahmadkhokhar444/my-portfolio/",
     desc: "A personal portfolio website showcasing my skills, projects, and experience with a modern design and smooth animations.",
     img: Proj1,
