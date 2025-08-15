@@ -99,11 +99,12 @@ const Services = () => {
                     Know More
                   </button>
 
-                  {/* Download Resume */}
+                  {/* ✅ Unified Resume Button */}
                   <a
                     href="/resume.pdf"
                     download
-                    className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium border border-white/50 hover:bg-white hover:text-primary transition duration-300"
+                    className="btn-resume flex items-center gap-2"
+                    aria-label="Download Resume PDF"
                   >
                     <FiDownload className="text-lg" />
                     Download Resume
