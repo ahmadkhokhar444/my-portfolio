@@ -7,7 +7,7 @@ import Wall from "../../assets/hero-wall.png";
 import { motion, useInView } from "framer-motion";
 import CountUp from "react-countup";
 
-// ✅ Background image config (Next.js compatible)
+// ✅ Background image config
 const wallBackground = {
   backgroundImage: `url(${Wall.src})`,
   backgroundSize: "cover",
@@ -15,7 +15,7 @@ const wallBackground = {
   backgroundRepeat: "no-repeat",
 };
 
-// ✅ Framer motion variant for scroll-triggered animation
+// ✅ Framer motion variant
 export const slideUp = (delay = 0) => ({
   hidden: { y: 50, opacity: 0 },
   visible: {
@@ -46,7 +46,7 @@ const Hero = () => {
     >
       <div className="bg-gradient-to-b from-primary/50 to-black">
         <div className="container grid grid-cols-1 md:grid-cols-2 min-h-[650px]">
-          {/* Brand info */}
+          {/* Left Content */}
           <div className="flex flex-col justify-center md:text-left py-14 md:py-0 relative z-10">
             <div className="text-center md:text-left space-y-6">
               <motion.p
@@ -56,7 +56,7 @@ const Hero = () => {
                 viewport={{ once: true, amount: 0.5 }}
                 className="text-4xl font-poppins"
               >
-                Hello, I'm{" "}
+                Hello, I'm
               </motion.p>
 
               <motion.p
@@ -91,7 +91,6 @@ const Hero = () => {
                 viewport={{ once: true, amount: 0.5 }}
                 className="flex gap-4 justify-center md:justify-start"
               >
-                {/* Know More (smooth scroll to #services) */}
                 <button
                   type="button"
                   onClick={() => scrollToId("services")}
@@ -101,19 +100,19 @@ const Hero = () => {
                   Know More
                 </button>
 
-                {/* Download Resume (make sure /public/resume.pdf exists) */}
+                {/* ✅ Unified Resume Button */}
                 <a
                   href="/resume.pdf"
                   download
                   aria-label="Download Resume PDF"
-                  className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium bg-white text-black hover:bg-gray-100 transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  className="btn-resume"
                   rel="noopener"
                 >
                   Download Resume
                 </a>
               </motion.div>
 
-              {/* Stats section */}
+              {/* Stats */}
               <motion.div
                 ref={statsRef}
                 variants={slideUp(1)}
@@ -145,7 +144,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Hero image */}
+          {/* Right Image */}
           <div className="flex justify-center md:justify-end items-center relative">
             <div className="bg-black rounded-3xl overflow-hidden h-[500px] flex items-end relative group hover:scale-105 duration-700">
               <Image
