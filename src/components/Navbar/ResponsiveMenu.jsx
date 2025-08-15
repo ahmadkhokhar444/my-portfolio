@@ -2,7 +2,7 @@ import React from "react";
 import { NavLinks } from "./Navbar";
 import Link from "next/link";
 
-const ResponsiveMenu = ({ showMenu, setShowMenu }) => {
+const ResponsiveMenu = ({ showMenu, setShowMenu, resumeLink }) => {
   return (
     <div className="md:hidden">
       <div
@@ -32,6 +32,18 @@ const ResponsiveMenu = ({ showMenu, setShowMenu }) => {
                 </Link>
               </li>
             ))}
+            {/* Resume link */}
+            <li className="py-6">
+              <a
+                href={resumeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl font-medium text-primary underline hover:text-white"
+                onClick={() => setShowMenu(false)}
+              >
+                Get Resume
+              </a>
+            </li>
           </ul>
         </div>
 
