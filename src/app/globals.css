@@ -10,6 +10,13 @@
     -webkit-text-stroke: 1px rgb(255, 0, 0);
   }
 }
+@layer components {
+  .btn-resume {
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium bg-primary text-white hover:bg-primary/80 transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black;
+  }
+}
+
+
 
 @layer components {
   .btn {
