@@ -2,6 +2,7 @@
 import React from "react";
 import Proj1 from "../../assets/proj1.png";
 import Proj6 from "../../assets/proj4.png";
+import Proj5 from "../../assets/proj5.png";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -9,17 +10,26 @@ import { motion } from "framer-motion";
 const ProjectsData = [
   {
     id: 1,
-    title: "Foodie Zone Website",
-    link_1: "https://11-foodie-zone.netlify.app/",
-    link_2: "https://github.com/ahmadkhokhar444/12_ecommerce-web/",
-    desc: "A modern restaurant and food delivery website featuring menu browsing, online ordering, and customer reviews.",
+    title: "Portfolio Web",
+    link_1: "https://foodiezone-web.netlify.app/",
+    link_2: "https://github.com/ahmadkhokhar444/my-portfolio/",
+    desc: "A personal portfolio website showcasing my skills, projects, and experience with a modern design and smooth animations.",
     img: Proj1,
     delay: 0.2,
   },
   {
-    id: 3,
+    id: 2,
     title: "Ecommerce Web",
-    link_1: "https://ahmadwebmanproj3-omnifood.netlify.app/",
+    link_1: "https://11-ecommerce-web.netlify.app/",
+    link_2: "https://github.com/ahmadkhokhar444/12_ecommerce-web",
+    desc: "A full-featured ecommerce website with product listings, shopping cart, secure checkout, and user account management.",
+    img: Proj5,
+    delay: 0.4,
+  },
+  {
+    id: 3,
+    title: "Omnifood Web",
+    link_1: "https://omnifood-js-proj.netlify.app/",
     link_2:
       "https://github.com/ahmadkhokhar444/Build-Responsive-Real-World-Websites-with-HTML-and-CSS-Pracice-FROM-ME/",
     desc: "A full-featured ecommerce website with product listings, shopping cart, secure checkout, and user account management.",
