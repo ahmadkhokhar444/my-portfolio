@@ -105,7 +105,7 @@ const Hero = () => {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn inline-block text-lg py-1 px-4 transition-all duration-300 hover:scale-110"
+                className="btn inline-block text-lg py-1 px-4 transition-all duration-300"
               >
                 Download Resume
               </a>
