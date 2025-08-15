@@ -10,10 +10,10 @@ import { motion } from "framer-motion";
 const ProjectsData = [
   {
     id: 1,
-    title: "Foodie Zone Website",
+    title: "Portfolio Web",
     link_1: "https://foodiezone-web.netlify.app/",
-    link_2: "https://github.com/ahmadkhokhar444/12_ecommerce-web/",
-    desc: "A modern restaurant and food delivery website featuring menu browsing, online ordering, and customer reviews.",
+    link_2: "https://github.com/ahmadkhokhar444/my-portfolio/",
+    desc: "A personal portfolio website showcasing my skills, projects, and experience with a modern design and smooth animations.",
     img: Proj1,
     delay: 0.2,
   },
