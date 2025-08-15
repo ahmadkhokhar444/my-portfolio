@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
 import Proj1 from "../../assets/proj1.png";
-import Proj3 from "../../assets/proj2.png";
-import Proj2 from "../../assets/proj3.png";
+import Proj6 from "../../assets/proj4.png";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -18,21 +17,13 @@ const ProjectsData = [
     delay: 0.2,
   },
   {
-    id: 2,
-    title: "Space Web",
-    link_1: "https://14-space-web.netlify.app/",
-    link_2: "https://github.com/ahmadkhokhar444/15_Space_web",
-    desc: "An interactive space exploration platform with real-time data, stunning visuals, and educational resources about the universe.",
-    img: Proj2,
-    delay: 0.4,
-  },
-  {
     id: 3,
     title: "Ecommerce Web",
-    link_1: "https://13-ecommerce-web.netlify.app/",
-    link_2: "https://github.com/ahmadkhokhar444/14_Ecomerce_web/",
+    link_1: "https://ahmadwebmanproj3-omnifood.netlify.app/",
+    link_2:
+      "https://github.com/ahmadkhokhar444/Build-Responsive-Real-World-Websites-with-HTML-and-CSS-Pracice-FROM-ME/",
     desc: "A full-featured ecommerce website with product listings, shopping cart, secure checkout, and user account management.",
-    img: Proj3,
+    img: Proj6,
     delay: 0.6,
   },
 ];
@@ -53,27 +44,11 @@ const slideUp = (delay = 0) => ({
   },
 });
 
-const Projects = () => {
+const Projects2 = () => {
   return (
     <section className="bg-black text-white">
-      {/* Changed py-20 to py-10 (or py-5 for even less space) */}
-      <div className="container py-10 xl:py-10 space-y-20">
-        {/* heading title */}
-        <motion.div
-          initial={{ scale: 1.2, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: false, amount: 0.5 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative"
-        >
-          <p className="text-3xl lg:text-4xl mb-20 tracking-widest font-bold text-center uppercase relative z-20">
-            Projects
-          </p>
-          <p className="text-5xl lg:text-8xl text-white/10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 uppercase font-extrabold">
-            Projects
-          </p>
-        </motion.div>
-
+      {/* Changed py-20 xl:py-36 to py-10 xl:py-10 */}
+      <div className="container py-10 xl:py-10 space-y-36">
         {/* Project Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 items-start">
           {ProjectsData.map((project) => (
@@ -84,12 +59,16 @@ const Projects = () => {
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
               className="bg-black relative hover:z-10 hover:scale-110
-                         border-2 border-red-700 
+                         border-2 border-red-700
                          hover:border-red-900
-                         hover:red-shadow 
+                         hover:red-shadow
                          p-4 rounded-xl duration-300 group space-y-5"
             >
-              <Image src={project.img} alt={project.title} className="w-full" />
+              <Image
+                src={project.img}
+                alt={project.title}
+                className="w-full h-44"
+              />
               <div className="space-y-2 p-4">
                 <h1 className="text-xl font-bold">{project.title}</h1>
                 <p>{project.desc}</p>
@@ -97,9 +76,9 @@ const Projects = () => {
               {/* Button section: Now part of the normal flow, changes max-height on hover */}
               <div
                 className="flex justify-around items-center pt-4
-                          max-h-0 opacity-0 overflow-hidden
-                          group-hover:max-h-40 group-hover:opacity-100
-                          transition-all duration-300 ease-out pb-5"
+            max-h-0 opacity-0 overflow-hidden
+            group-hover:max-h-40 group-hover:opacity-100
+            transition-all duration-300 ease-out pb-20" /* Changed pb-5 to pb-20, and removed mb-20 */
               >
                 <a
                   href={project.link_1}
@@ -126,4 +105,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default Projects2;

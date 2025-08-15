@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react"; // Import useRef
 import Image from "next/image";
 import HeroImg from "../../assets/red-man.png";
 import Circle from "../../assets/hero-circle.png";
 import Wall from "../../assets/hero-wall.png";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion"; // Import useInView
 import CountUp from "react-countup";
 
 // ✅ Background image config (Next.js compatible)
@@ -15,10 +15,25 @@ const wallBackground = {
   backgroundRepeat: "no-repeat",
 };
 
+// ✅ Framer motion variant for scroll-triggered animation
+export const slideUp = (delay = 0) => ({
+  hidden: { y: 50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.6, delay },
+  },
+});
+
 const Hero = () => {
   const [hasMounted, setHasMounted] = useState(false);
+  // 1. Create a ref for the stats section
+  const statsRef = useRef(null);
+  // 2. Use useInView to detect when the stats section is in view
+  //    once: true means it will only trigger once when it enters the viewport
+  //    amount: 0.5 means 50% of the element must be visible
+  const statsInView = useInView(statsRef, { once: true, amount: 0.5 });
 
-  // ✅ Ensure CountUp only runs on the client
   useEffect(() => {
     setHasMounted(true);
   }, []);
@@ -33,20 +48,59 @@ const Hero = () => {
           {/* Brand info */}
           <div className="flex flex-col justify-center md:text-left py-14 md:py-0">
             <div className="text-center md:text-left space-y-6">
-              <p className="text-4xl font-poppins">Hello, I'm </p>
-              <p className="text-5xl lg:text-7xl font-satisfy text-outline">
-                Brooklyn Gilbert
-              </p>
-              <p className="text-sm leading-snug">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Mollitia sequi itaque dolorum tempora aspernatur a vero
-                similique alias quo molestias cum provident eos in
-                exercitationem, quod, doloremque, vel doloribus porro.
-              </p>
-              <button className="btn">Know More</button>
+              <motion.p
+                variants={slideUp(0.2)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.5 }}
+                className="text-4xl font-poppins"
+              >
+                Hello, I'm{" "}
+              </motion.p>
+
+              <motion.p
+                variants={slideUp(0.4)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.5 }}
+                className="text-5xl lg:text-7xl font-satisfy text-outline"
+              >
+                Ahmad Mustafa
+              </motion.p>
+
+              <motion.p
+                variants={slideUp(0.6)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.5 }}
+                className="text-sm leading-snug"
+              >
+                A professional frontend developer crafts responsive,
+                user-friendly web interfaces using modern frameworks, ensures
+                cross-browser compatibility, optimizes performance, and
+                collaborates with designers to deliver seamless digital
+                experiences.
+              </motion.p>
+
+              <motion.button
+                variants={slideUp(0.8)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.5 }}
+                className="btn"
+              >
+                Know More
+              </motion.button>
 
               {/* Stats section */}
-              <div className="flex justify-around bg-gradient-to-b from-primary/50 to-black border-2 border-primary/80 rounded-xl hover:red-shadow hover:scale-105 duration-300 md:max-w-[400px] !mt-[44px] p-4">
+              <motion.div
+                ref={statsRef} // 3. Attach the ref to the stats motion.div
+                variants={slideUp(1)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.5 }}
+                className="flex justify-around bg-gradient-to-b from-primary/50 to-black border-2 border-primary/80 rounded-xl hover:red-shadow hover:scale-105 duration-300 md:max-w-[400px] !mt-[44px] p-4"
+              >
                 {[
                   { label: "Experience", end: 5 },
                   { label: "Projects", end: 199 },
@@ -54,20 +108,21 @@ const Hero = () => {
                 ].map((stat, index) => (
                   <div key={index} className="flex flex-col items-center gap-2">
                     <p className="text-2xl font-bold">
-                      {hasMounted && (
-                        <CountUp
-                          end={stat.end}
-                          start={0}
-                          suffix="+"
-                          delay={1.4}
-                          enableScrollSpy
-                        />
-                      )}
+                      {hasMounted &&
+                        statsInView && ( // 4. Conditionally render CountUp only when mounted AND stats section is in view
+                          <CountUp
+                            start={0}
+                            end={stat.end}
+                            suffix="+"
+                            delay={2.5} // 5. Reduced delay for quicker start
+                            // Removed enableScrollSpy as useInView is handling it
+                          />
+                        )}
                     </p>
                     <p className="text-sm">{stat.label}</p>
                   </div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </div>
 

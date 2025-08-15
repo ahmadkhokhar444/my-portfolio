@@ -4,6 +4,7 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import { MdMenu } from "react-icons/md";
 import ResponsiveMenu from "./ResponsiveMenu";
+import { motion } from "framer-motion";
 
 export const NavLinks = [
   {
@@ -36,7 +37,11 @@ const Navbar = () => {
     setShowMenu(!showMenu);
   };
   return (
-    <nav className="bg-black text-white">
+    <motion.nav
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="bg-black text-white">
       <div className="container flex items-center justify-between py-5 relative z-[9999]">
         {/* Logo section */}
         <div>
@@ -57,11 +62,10 @@ const Navbar = () => {
               return (
                 <li key={link.id}>
                   <Link
-                    className={`${
-                      isActive
-                        ? "text-primary text-xl font-bold hover:text-white"
-                        : ""
-                    } inline-block text-lg py-1 px-4 hover:red-shadow hover:bg-primary transition-all duration-300 hover:scale-110`}
+                    className={`${isActive
+                      ? "text-primary text-xl font-bold hover:text-white"
+                      : ""
+                      } inline-block text-lg py-1 px-4 hover:red-shadow hover:bg-primary transition-all duration-300 hover:scale-110`}
                     href={link.link}
                   >
                     {link.title}
@@ -81,7 +85,7 @@ const Navbar = () => {
         {/* Mobile sidebar section */}
         <ResponsiveMenu showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
