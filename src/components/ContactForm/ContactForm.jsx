@@ -1,162 +1,85 @@
-"use client";
-
-import React, { useState } from "react";
-import emailJs from "@emailjs/browser";
-import SendEmailPng from "../../assets/mail.png";
-import Image from "next/image";
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const ContactForm = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    from_name: "",
+    from_email: "",
     message: "",
   });
 
-  const [errors, setErrors] = useState({});
-  const [sending, setSending] = useState(false);
-
-  const validate = () => {
-    const newErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    }
-
-    return newErrors;
-  };
-
   const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-
-    // Clear the error on input change
-    setErrors((prev) => ({
-      ...prev,
-      [name]: "",
-    }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
 
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    setSending(true);
-
-    emailJs
+    emailjs
       .sendForm(
-        "service_1hapoys",
-        "template_unsiegl",
-        e.target,
-        "LJvpAtmXpRNKNg-7g"
+        "service_yxhy7jh", // your service ID
+        "template_unsiegl", // your template ID
+        form.current,
+        "jPNUhxkjRUQmUN-ZQ" // your public key
       )
-      .then(() => {
-        alert("Email sent successfully!");
-        setFormData({ name: "", email: "", message: "" });
-        setErrors({});
-      })
-      .catch(() => {
-        alert("Failed to send email.");
-      })
-      .finally(() => setSending(false));
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert("Message sent successfully!");
+          setFormData({ from_name: "", from_email: "", message: "" });
+        },
+        (error) => {
+          console.log(error.text);
+          alert("Failed to send message. Please try again.");
+        }
+      );
   };
 
   return (
-    <section className="bg-black text-white py-24">
-      <div className="container grid grid-cols-1 md:grid-cols-2 gap-10">
-        {/* form section */}
-        <div className="flex justify-center items-center">
-          <form
-            onSubmit={handleSubmit}
-            className="bg-primary/45 p-8 rounded-xl w-full max-w-lg"
-          >
-            <h2 className="text-2xl mb-4">Get in touch</h2>
-
-            {/* Name */}
-            <div className="mb-4">
-              <label className="block text-white/30">Name</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className={`mt-1 block w-full px-3 py-2 border rounded-md bg-black text-white ${errors.name ? "border-red-500" : "border-gray-300"
-                  }`}
-              />
-              {errors.name && (
-                <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-              )}
-            </div>
-
-            {/* Email */}
-            <div className="mb-4">
-              <label className="block text-white/30">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={`mt-1 block w-full px-3 py-2 border rounded-md bg-black text-white ${errors.email ? "border-red-500" : "border-gray-300"
-                  }`}
-              />
-              {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-              )}
-            </div>
-
-            {/* Message */}
-            <div className="mb-4">
-              <label className="block text-white/30">Message</label>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                className={`mt-1 block w-full px-3 py-4 border rounded-md bg-black text-white ${errors.message ? "border-red-500" : "border-gray-300"
-                  }`}
-              />
-              {errors.message && (
-                <p className="text-red-500 text-sm mt-1">{errors.message}</p>
-              )}
-            </div>
-
-            <button
-              type="submit"
-              className="btn mt-4 px-8"
-              disabled={sending}
-            >
-              {sending ? "Sending..." : "Send Email"}
-            </button>
-          </form>
-        </div>
-
-        {/* Image section */}
-        <div className="hidden md:flex justify-center items-center">
-          <Image
-            src={SendEmailPng}
-            alt="send email"
-            className="w-[300px] animate-rocket"
-          />
-        </div>
+    <form ref={form} onSubmit={sendEmail} className="space-y-4">
+      <div>
+        <label className="block text-sm text-gray-300">Your Name</label>
+        <input
+          type="text"
+          name="from_name"
+          value={formData.from_name}
+          onChange={handleChange}
+          className="w-full rounded-md p-2 text-black"
+          required
+        />
       </div>
-    </section>
+
+      <div>
+        <label className="block text-sm text-gray-300">Your Email</label>
+        <input
+          type="email"
+          name="from_email"
+          value={formData.from_email}
+          onChange={handleChange}
+          className="w-full rounded-md p-2 text-black"
+          required
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm text-gray-300">Message</label>
+        <textarea
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          className="w-full rounded-md p-2 text-black"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="bg-primary hover:bg-primary/80 text-white font-bold py-2 px-4 rounded"
+      >
+        Send Message
+      </button>
+    </form>
   );
 };
 
