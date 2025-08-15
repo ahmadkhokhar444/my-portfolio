@@ -103,6 +103,7 @@ const Hero = () => {
                 {/* ✅ Unified Resume Button */}
               <a
                 href="/resume.pdf"
+                download
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn inline-block text-lg py-1 px-4 transition-all duration-300"
