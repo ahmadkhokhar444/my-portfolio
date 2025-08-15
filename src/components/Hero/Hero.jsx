@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react"; // Import useRef
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import HeroImg from "../../assets/red-man.png";
 import Circle from "../../assets/hero-circle.png";
 import Wall from "../../assets/hero-wall.png";
-import { motion, useInView } from "framer-motion"; // Import useInView
+import { motion, useInView } from "framer-motion";
 import CountUp from "react-countup";
 
 // ✅ Background image config (Next.js compatible)
@@ -27,11 +27,7 @@ export const slideUp = (delay = 0) => ({
 
 const Hero = () => {
   const [hasMounted, setHasMounted] = useState(false);
-  // 1. Create a ref for the stats section
   const statsRef = useRef(null);
-  // 2. Use useInView to detect when the stats section is in view
-  //    once: true means it will only trigger once when it enters the viewport
-  //    amount: 0.5 means 50% of the element must be visible
   const statsInView = useInView(statsRef, { once: true, amount: 0.5 });
 
   useEffect(() => {
@@ -82,19 +78,27 @@ const Hero = () => {
                 experiences.
               </motion.p>
 
-              <motion.button
+              {/* Action Buttons */}
+              <motion.div
                 variants={slideUp(0.8)}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.5 }}
-                className="btn"
+                className="flex gap-4 justify-center md:justify-start"
               >
-                Know More
-              </motion.button>
+                <button className="btn">Know More</button>
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="btn bg-white text-black hover:bg-gray-200 transition-all duration-300"
+                >
+                  Download Resume
+                </a>
+              </motion.div>
 
               {/* Stats section */}
               <motion.div
-                ref={statsRef} // 3. Attach the ref to the stats motion.div
+                ref={statsRef}
                 variants={slideUp(1)}
                 initial="hidden"
                 whileInView="visible"
@@ -108,16 +112,14 @@ const Hero = () => {
                 ].map((stat, index) => (
                   <div key={index} className="flex flex-col items-center gap-2">
                     <p className="text-2xl font-bold">
-                      {hasMounted &&
-                        statsInView && ( // 4. Conditionally render CountUp only when mounted AND stats section is in view
-                          <CountUp
-                            start={0}
-                            end={stat.end}
-                            suffix="+"
-                            delay={2.5} // 5. Reduced delay for quicker start
-                            // Removed enableScrollSpy as useInView is handling it
-                          />
-                        )}
+                      {hasMounted && statsInView && (
+                        <CountUp
+                          start={0}
+                          end={stat.end}
+                          suffix="+"
+                          delay={2.5}
+                        />
+                      )}
                     </p>
                     <p className="text-sm">{stat.label}</p>
                   </div>
