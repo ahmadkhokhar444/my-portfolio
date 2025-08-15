@@ -34,6 +34,11 @@ const Hero = () => {
     setHasMounted(true);
   }, []);
 
+  const scrollToId = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <section
       style={wallBackground}
@@ -42,13 +47,13 @@ const Hero = () => {
       <div className="bg-gradient-to-b from-primary/50 to-black">
         <div className="container grid grid-cols-1 md:grid-cols-2 min-h-[650px]">
           {/* Brand info */}
-          <div className="flex flex-col justify-center md:text-left py-14 md:py-0">
+          <div className="flex flex-col justify-center md:text-left py-14 md:py-0 relative z-10">
             <div className="text-center md:text-left space-y-6">
               <motion.p
                 variants={slideUp(0.2)}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.5 }}
                 className="text-4xl font-poppins"
               >
                 Hello, I'm{" "}
@@ -58,7 +63,7 @@ const Hero = () => {
                 variants={slideUp(0.4)}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.5 }}
                 className="text-5xl lg:text-7xl font-satisfy text-outline"
               >
                 Ahmad Mustafa
@@ -68,7 +73,7 @@ const Hero = () => {
                 variants={slideUp(0.6)}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.5 }}
                 className="text-sm leading-snug"
               >
                 A professional frontend developer crafts responsive,
@@ -83,14 +88,26 @@ const Hero = () => {
                 variants={slideUp(0.8)}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.5 }}
                 className="flex gap-4 justify-center md:justify-start"
               >
-                <button className="btn">Know More</button>
+                {/* Know More (smooth scroll to #services) */}
+                <button
+                  type="button"
+                  onClick={() => scrollToId("services")}
+                  aria-label="Scroll to Services"
+                  className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium border border-white/20 bg-white/10 hover:bg-white/20 backdrop-blur-sm transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                >
+                  Know More
+                </button>
+
+                {/* Download Resume (make sure /public/resume.pdf exists) */}
                 <a
                   href="/resume.pdf"
                   download
-                  className="btn bg-white text-black hover:bg-gray-200 transition-all duration-300"
+                  aria-label="Download Resume PDF"
+                  className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium bg-white text-black hover:bg-gray-100 transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  rel="noopener"
                 >
                   Download Resume
                 </a>
@@ -102,8 +119,8 @@ const Hero = () => {
                 variants={slideUp(1)}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, amount: 0.5 }}
-                className="flex justify-around bg-gradient-to-b from-primary/50 to-black border-2 border-primary/80 rounded-xl hover:red-shadow hover:scale-105 duration-300 md:max-w-[400px] !mt-[44px] p-4"
+                viewport={{ once: true, amount: 0.5 }}
+                className="flex justify-around bg-gradient-to-b from-primary/50 to-black border-2 border-primary/80 rounded-xl hover:scale-105 duration-300 md:max-w-[400px] !mt-[44px] p-4"
               >
                 {[
                   { label: "Experience", end: 5 },
@@ -117,7 +134,7 @@ const Hero = () => {
                           start={0}
                           end={stat.end}
                           suffix="+"
-                          delay={2.5}
+                          delay={0.2}
                         />
                       )}
                     </p>
@@ -130,16 +147,18 @@ const Hero = () => {
 
           {/* Hero image */}
           <div className="flex justify-center md:justify-end items-center relative">
-            <div className="bg-black rounded-3xl overflow-hidden h-[500px] flex items-end relative group hover:red-shadow hover:scale-105 duration-700">
+            <div className="bg-black rounded-3xl overflow-hidden h-[500px] flex items-end relative group hover:scale-105 duration-700">
               <Image
                 src={Circle}
-                alt="circle"
-                className="absolute top-4 -left-0 -z-0 animate-spin group-hover:animate-pulse duration-300"
+                alt="Decorative spinning circle"
+                className="absolute top-4 -left-0 -z-0 animate-spin group-hover:animate-pulse duration-300 pointer-events-none"
+                priority
               />
               <Image
                 src={HeroImg}
-                alt="heroImg"
+                alt="Ahmad Mustafa illustration"
                 className="w-[400px] relative z-10 group-hover:grayscale group-hover:scale-90 duration-700"
+                priority
               />
             </div>
           </div>

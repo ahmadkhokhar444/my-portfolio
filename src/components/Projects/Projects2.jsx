@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Proj1 from "../../assets/proj6.png";
 import Proj6 from "../../assets/proj4.png";
 import Proj5 from "../../assets/proj5.png";
 import Image from "next/image";
@@ -9,22 +8,13 @@ import { motion } from "framer-motion";
 // Project list with delay per card
 const ProjectsData = [
   {
-    id: 1,
-    title: "Portfolio Web",
-    link_1: "https://1-portfolio-web.netlify.app/",
-    link_2: "https://github.com/ahmadkhokhar444/my-portfolio/",
-    desc: "A personal portfolio website showcasing my skills, projects, and experience with a modern design and smooth animations.",
-    img: Proj6,
-    delay: 0.2,
-  },
-  {
     id: 2,
     title: "Ecommerce Web",
     link_1: "https://11-ecommerce-web.netlify.app/",
     link_2: "https://github.com/ahmadkhokhar444/12_ecommerce-web",
     desc: "A full-featured ecommerce website with product listings, shopping cart, secure checkout, and user account management.",
     img: Proj5,
-    delay: 0.4,
+    delay: 0.2,
   },
   {
     id: 3,
