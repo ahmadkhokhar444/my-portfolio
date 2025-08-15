@@ -101,15 +101,16 @@ const Hero = () => {
                 </button>
 
                 {/* ✅ Unified Resume Button */}
-                <a
-                  href="/resume.pdf"
-                  download
-                  aria-label="Download Resume PDF"
-                  className="btn-resume"
-                  rel="noopener"
-                >
-                  Download Resume
-                </a>
+<a
+  href="/resume.pdf"
+  download
+  aria-label="Download Resume PDF"
+  className="btn-resume"
+  rel="noopener"
+>
+  Download Resume
+</a>
+
               </motion.div>
 
               {/* Stats */}
