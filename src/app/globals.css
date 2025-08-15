@@ -1,22 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap");
+
 /* styles/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Base styles */
 @layer base {
   .text-outline {
     -webkit-text-stroke: 1px rgb(255, 0, 0);
   }
 }
 
+/* Components */
 @layer components {
+  .btn-resume {
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium bg-primary text-white hover:bg-primary/80 transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black;
+  }
+
   .btn {
     @apply bg-gradient-to-r from-primary to-primary/50 text-white font-bold py-2 px-4 rounded hover:red-shadow duration-300;
   }
 }
 
+/* Utilities */
 @layer utilities {
   .red-shadow {
     box-shadow: 0 0 20px 5px rgba(255, 0, 0);
@@ -26,6 +34,7 @@
   }
 }
 
+/* Global body style */
 body {
   background-color: black;
 }

@@ -99,15 +99,18 @@ const Services = () => {
                     Know More
                   </button>
 
-                  {/* Download Resume */}
+                  {/* ✅ Unified Resume Button */}
+                 
+
                   <a
-                    href="/resume.pdf"
-                    download
-                    className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium border border-white/50 hover:bg-white hover:text-primary transition duration-300"
-                  >
-                    <FiDownload className="text-lg" />
-                    Download Resume
-                  </a>
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn inline-block text-lg py-1 px-4 transition-all duration-300 hover:scale-110"
+              >
+              <FiDownload className="text-lg" />
+                Download Resume
+              </a>
                 </motion.div>
               </div>
             </div>
