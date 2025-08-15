@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# My Portfolio
+
+Welcome to my personal portfolio project! This web application showcases my skills, projects, and services as a developer. Built with Next.js and Tailwind CSS, it features a modern, responsive design and interactive components.
+
+## Features
+
+- **Home Page:** Engaging hero section and banner
+- **Projects:** Detailed showcase of my work
+- **Services:** Overview of offered services
+- **Contact:** Contact form for inquiries
+- **Responsive Navbar:** Mobile-friendly navigation
+- **Footer:** Social links and copyright
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/)
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [PostCSS](https://postcss.org/)
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository:**
+   ```powershell
+   git clone https://github.com/ahmadkhokhar444/my-portfolio.git
+   cd my-portfolio/portfolio-1
+   ```
+2. **Install dependencies:**
+   ```powershell
+   npm install
+   ```
+3. **Run the development server:**
+   ```powershell
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Folder Structure
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `src/app/` - Main app pages (Home, Contact, Projects, Services)
+- `src/components/` - Reusable UI components
+- `src/assets/` - Images and graphics
+- `public/` - Static files (SVGs, PDFs)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Customization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Update content in `src/app/` and `src/components/` to personalize your portfolio.
+- Replace images in `src/assets/` and `public/` as needed.
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+You can deploy this portfolio easily on [Vercel](https://vercel.com/) or any platform supporting Next.js.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is open source and available under the [MIT License](LICENSE).
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Pro Tip:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> To make your portfolio stand out, regularly update your projects and add a blog section to share your insights and learning journey!
