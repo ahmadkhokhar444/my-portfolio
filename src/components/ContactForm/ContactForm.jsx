@@ -16,11 +16,18 @@ const ContactForm = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
+    // Combine message with sender email
+    const fullMessage = `${formData.message}\n\nSender Email: ${formData.from_email}`;
+
+    // Create a FormData object so EmailJS still works
+    const updatedForm = new FormData(form.current);
+    updatedForm.set("message", fullMessage);
+
     emailjs
-      .sendForm(
+      .send(
         "service_yxhy7jh", // your service ID
         "template_unsiegl", // your template ID
-        form.current,
+        Object.fromEntries(updatedForm), // convert to plain object
         "jPNUhxkjRUQmUN-ZQ" // your public key
       )
       .then(
