@@ -14,7 +14,7 @@ const ProjectsData = [
     link_1: "https://1-portfolio-web.netlify.app/",
     link_2: "https://github.com/ahmadkhokhar444/my-portfolio/",
     desc: "A personal portfolio website showcasing my skills, projects, and experience with a modern design and smooth animations.",
-    img: Proj1,
+    img: Proj6,
     delay: 0.2,
   },
   {
