@@ -11,7 +11,7 @@ const ProjectsData = [
   {
     id: 1,
     title: "Foodie Zone Website",
-    link_1: "https://11-foodie-zone.netlify.app/",
+    link_1: "https://foodiezone-web.netlify.app/",
     link_2: "https://github.com/ahmadkhokhar444/12_ecommerce-web/",
     desc: "A modern restaurant and food delivery website featuring menu browsing, online ordering, and customer reviews.",
     img: Proj1,
@@ -29,7 +29,7 @@ const ProjectsData = [
   {
     id: 3,
     title: "Ecommerce Web",
-    link_1: "https://13-ecommerce-web.netlify.app/",
+    link_1: "https://14-ecommerce-store-web.netlify.app/",
     link_2: "https://github.com/ahmadkhokhar444/14_Ecomerce_web/",
     desc: "A full-featured ecommerce website with product listings, shopping cart, secure checkout, and user account management.",
     img: Proj3,
