@@ -34,17 +34,13 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
 
-    setSending(true);
+    // Combine message with sender email
+    const fullMessage = `${formData.message}\n\nSender Email: ${formData.from_email}`;
 
-    // Append sender email to message
-    const fullMessage = `${formData.message}\n\nSender Email: ${formData.email}`;
-    form.current.message.value = fullMessage;
+    // Create a FormData object so EmailJS still works
+    const updatedForm = new FormData(form.current);
+    updatedForm.set("message", fullMessage);
 
     emailjs
       .sendForm(
@@ -65,23 +61,50 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="bg-black text-white py-24">
-      <div className="container grid grid-cols-1 md:grid-cols-2 gap-10">
-        {/* Form section */}
-        <div className="flex justify-center items-center">
-          <form
-            ref={form}
-            onSubmit={handleSubmit}
-            className="bg-primary/45 p-8 rounded-xl w-full max-w-lg"
-          >
-            <h2 className="text-2xl mb-4">Get in touch</h2>
+    <form ref={form} onSubmit={sendEmail} className="space-y-4">
+      <div>
+        <label className="block text-sm text-gray-300">Your Name</label>
+        <input
+          type="text"
+          name="from_name"
+          value={formData.from_name}
+          onChange={handleChange}
+          className="w-full rounded-md p-2 text-black"
+          required
+        />
+      </div>
 
-            {/* Name */}
-            <div className="mb-4">
-              <label className="block text-white/30">Name</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className={`mt-1 block w-full px-3 py-2 border rounded-md bg-black text-white ${
+      <div>
+        <label className="block text-sm text-gray-300">Your Email</label>
+        <input
+          type="email"
+          name="from_email"
+          value={formData.from_email}
+          onChange={handleChange}
+          className="w-full rounded-md p-2 text-black"
+          required
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm text-gray-300">Message</label>
+        <textarea
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          className="w-full rounded-md p-2 text-black"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="bg-primary hover:bg-primary/80 text-white font-bold py-2 px-4 rounded"
+      >
+        Send Message
+      </button>
+    </form>
+  );
+};
+
+export default ContactForm;
