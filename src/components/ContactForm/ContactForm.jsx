@@ -129,7 +129,7 @@ const ContactForm = () => {
             <div>
               <button
                 type="submit"
-                className="btn inline-block text-lg py-2 px-8 text-bold rounded-lg transition-all duration-300 transform hover:scale-105"
+                className="className="btn inline-block text-lg py-2 px-8 text-bold rounded-lg transition-all duration-300 transform hover:scale-105"
                 disabled={sending}
               >
                 {sending ? "Sending..." : "Send Email"}
