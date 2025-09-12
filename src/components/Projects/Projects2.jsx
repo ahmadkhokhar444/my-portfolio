@@ -2,6 +2,7 @@
 import React from "react";
 import Proj6 from "../../assets/proj4.png";
 import Proj5 from "../../assets/proj5.png";
+import Proj7 from "../../assets/proj7.png";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -30,13 +31,12 @@ const ProjectsData = [
     id: 4,
     title: "Sailor Website Bootstrap",
     link_1: "https://ahmadwebmanproj2.netlify.app/",
-    link_2:"https://github.com/ahmadkhokhar444/Sailor",
+    link_2: "https://github.com/ahmadkhokhar444/Sailor",
     desc: "A full-featured ecommerce website with product listings, shopping cart, secure checkout, and user account management.",
-    img: Proj6,
+    img: Proj7,
     delay: 0.6,
   },
 ];
-
 
 // Slide up animation config
 const slideUp = (delay = 0) => ({
