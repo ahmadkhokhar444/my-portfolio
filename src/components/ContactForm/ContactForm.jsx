@@ -8,8 +8,8 @@ import Image from "next/image";
 const ContactForm = () => {
   const form = useRef();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    name: "", // Corrected to 'name' to match the form state keys
+    email: "", // Corrected to 'email' to match the form state keys
     message: "",
   });
 
@@ -42,12 +42,13 @@ const ContactForm = () => {
 
     setSending(true);
 
-    const fullMessage = `${formData.message}\n\nSender Email: ${formData.email}`;
-    form.current.message.value = fullMessage;
+    // The form data is correctly structured with names matching the template variables
+    // so this manual fullMessage and updatedForm logic is not needed.
+    // It is simpler and more reliable to let emailjs handle the form data directly.
 
     emailjs
       .sendForm(
-        "service_1hapoys", // service ID
+        "service_2fzcshm", // service ID
         "template_unsiegl", // template ID
         form.current,
         "LJvpAtmXpRNKNg-7g" // public key
@@ -80,14 +81,12 @@ const ContactForm = () => {
               <label className="block text-sm mb-2 text-gray-300">Name</label>
               <input
                 type="text"
-                name="name"
+                name="from_name"
                 value={formData.name}
                 onChange={handleChange}
-                className={`w-full p-3 rounded-lg border-2 bg-black/20 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-300 ${
-                  errors.name ? "border-red-500" : "border-transparent"
+                className={`w-full p-3 rounded-lg border border-transparent bg-black/20 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-300 ${
+                  errors.name ? "border-red-500" : ""
                 }`}
-                maxLength={25}
-                required
               />
               {errors.name && (
                 <p className="text-red-500 text-sm mt-1">{errors.name}</p>
@@ -99,14 +98,12 @@ const ContactForm = () => {
               <label className="block text-sm mb-2 text-gray-300">Email</label>
               <input
                 type="email"
-                name="email"
+                name="from_email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full p-3 rounded-lg border-2 bg-black/20 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-300 ${
-                  errors.email ? "border-red-500" : "border-transparent"
+                className={`w-full p-3 rounded-lg border border-transparent bg-black/20 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-300 ${
+                  errors.email ? "border-red-500" : ""
                 }`}
-                maxLength={35}
-                required
               />
               {errors.email && (
                 <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -123,11 +120,9 @@ const ContactForm = () => {
                 value={formData.message}
                 onChange={handleChange}
                 rows="4"
-                className={`w-full p-3 rounded-lg border-2 bg-black/20 text-white placeholder-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-300 ${
-                  errors.message ? "border-red-500" : "border-transparent"
+                className={`w-full p-3 rounded-lg border border-transparent bg-black/20 text-white placeholder-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-300 ${
+                  errors.message ? "border-red-500" : ""
                 }`}
-                maxLength={200}
-                required
               ></textarea>
               {errors.message && (
                 <p className="text-red-500 text-sm mt-1">{errors.message}</p>
@@ -138,7 +133,7 @@ const ContactForm = () => {
             <div>
               <button
                 type="submit"
-                className="btn inline-block text-lg py-1 px-4 transition-all duration-300 transform hover:scale-105 hover:translate-x-1 hover:translate-y-1"
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"
                 disabled={sending}
               >
                 {sending ? "Sending..." : "Send Email"}
@@ -166,13 +161,13 @@ const ContactForm = () => {
       <style jsx global>{`
         @keyframes float-diagonal {
           0% {
-            transform: translate(5, -5);
+            transform: translate(0, 0);
           }
           50% {
             transform: translate(-20px, -20px) rotate(-5deg);
           }
           100% {
-            transform: translate(5, -5);
+            transform: translate(0, 0);
           }
         }
       `}</style>

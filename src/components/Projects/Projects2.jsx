@@ -26,7 +26,17 @@ const ProjectsData = [
     img: Proj6,
     delay: 0.6,
   },
+  {
+    id: 4,
+    title: "Sailor Website Bootstrap",
+    link_1: "https://ahmadwebmanproj2.netlify.app/",
+    link_2:"https://github.com/ahmadkhokhar444/Sailor",
+    desc: "A full-featured ecommerce website with product listings, shopping cart, secure checkout, and user account management.",
+    img: Proj6,
+    delay: 0.6,
+  },
 ];
+
 
 // Slide up animation config
 const slideUp = (delay = 0) => ({
