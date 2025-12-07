@@ -23,7 +23,7 @@ const ProjectsData = [
     link_1: "https://omnifood-js-proj.netlify.app/",
     link_2:
       "https://github.com/ahmadkhokhar444/Build-Responsive-Real-World-Websites-with-HTML-and-CSS-Pracice-FROM-ME/",
-    desc: "A full-featured ecommerce website with product listings, shopping cart, secure checkout, and user account management.",
+    desc: "A full-featured Food Restaurant website with different types of food, secure checkout, and user account management.",
     img: Proj6,
     delay: 0.6,
   },
@@ -32,7 +32,7 @@ const ProjectsData = [
     title: "Sailor Website Bootstrap",
     link_1: "https://ahmadwebmanproj2.netlify.app/",
     link_2: "https://github.com/ahmadkhokhar444/Sailor",
-    desc: "A full-featured ecommerce website with product listings, shopping cart, secure checkout, and user account management.",
+    desc: "A full-featured ecommerce company website with product listings, shopping cart, secure checkout and user account management.",
     img: Proj7,
     delay: 0.6,
   },
